@@ -57,29 +57,29 @@ class GamePole:
                 if 0 <= x < self.N and 0 <= y < self.N:
                     self.pole[x][y].around_mines += 1
 
-    def init(self):
+    def init(self) -> None:
         """Initial game board"""
 
         self.set_mines()
         self.set_around_mines()
 
-    def show(self):
+    def show(self) -> None:
         """Show board on console"""
 
         for i in range(self.N):
-            rows = ""
+            rows = []
             for j in range(self.N):
                 if not self.pole[i][j].fl_open:
-                    rows += "# "
+                    rows.append("# ")
                 elif self.pole[i][j].mine:
-                    rows += "* "
+                    rows.append("* ")
                 else:
-                    rows += f"{str(self.pole[i][j].around_mines)} "
-            print(rows)
+                    rows.append(f"{(self.pole[i][j].around_mines)} ")
+            print(*rows)
 
 
 class Game:
-    def __init__(self, pole=5, mine=1):
+    def __init__(self, pole=10, mine=12):
         # pole = int(input("Введите размер поля: "))
         # mine = int(input("Введите количество бомб: "))
         self.pole = pole
@@ -90,7 +90,7 @@ class Game:
         """Check user for win"""
         return self.game.opened_cells == self.game.safe_cells
 
-    def choose_cell(self):
+    def choose_cell(self) -> None:
         """Choose cell for playing game"""
 
         start_time = datetime.now()
@@ -117,7 +117,7 @@ class Game:
                     print(f"Время игры: {datetime.now() - start_time}")
                     flag = False
 
-    def next_step(self, row, col):
+    def next_step(self, row: int, col: int) -> None:
         """Play game if not find mine"""
 
         self.game.pole[row][col].fl_open = True
@@ -131,6 +131,6 @@ class Game:
                     self.next_step(row, j)
 
 
-if __name__ == "__main__":
-    game_1 = Game()
-    game_1.choose_cell()
+# if __name__ == "__main__":
+#     game_1 = Game()
+#     game_1.choose_cell()
