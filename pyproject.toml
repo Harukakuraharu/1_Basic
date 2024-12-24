@@ -30,12 +30,9 @@ line_length = 79
 lines_after_imports = 2
 
 
-# mypy
-[tool.mypy]
-exclude = ["migrations/"]
 
 [tool.pylint]
-ignore = [".git", "__pycache__", "migrations", ".venv"]
+ignore = [".git", "__pycache__", ".venv"]
 max-line-length = 79
 disable = ["C0114", "C0115", "C0116", "W1514", "W3101", "R0903", "C0103"]
 
