@@ -36,22 +36,6 @@ class GamePole:
 
     def calc_around_mines(self, row: int, col: int) -> None:
         """Calculate count of the mine on neighbour cells"""
-        # coordinates = [
-        #     (-1, -1),
-        #     (0, -1),
-        #     (1, -1),
-        #     (-1, 0),
-        #     (1, 0),
-        #     (-1, 1),
-        #     (0, 1),
-        #     (1, 1),
-        # ]
-        # for row_x, col_y in coordinates:
-        #     x = row + row_x
-        #     y = col + col_y
-        #     if 0 <= x < self.N and 0 <= y < self.N:
-        #         self.pole[x][y].around_mines += 1
-
         for x in range(row - 1, row + 2):
             for y in range(col - 1, col + 2):
                 if 0 <= x < self.N and 0 <= y < self.N:
